@@ -11,7 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-      echo "cibai"
+      echo "cibai";
+        echo "lll";
         ?>
     </body>
 </html>
