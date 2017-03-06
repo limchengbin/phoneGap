@@ -18,27 +18,44 @@ and open the template in the editor.
             echo $language[$x]['language_name'];
             echo $language[$x]['language_price'];
             echo '<img src="img/' . $language[$x]["language_bgpic"] . '" alt=""/>';
-            echo '<form><input onclick="addLang(1)" value="Press Me" type="button" ></form>';
+            echo '<button onclick="addLang(' . $language[$x]["language_id"] . ')"> Press Me </button>';
         }
         ?>
 
 
-        <script>
-            function addLang(id) {
-                $(document).ready(function () {
-                    $.ajax({
-                        url: "include/addLang.php",
-                        type: "post",
-                        data: {
-                            id: id
-                        }
-                        success: function(data){
-                            alert(data);
-                        }
 
-                    });
-                });
-            }
+        <form action="" method="POST">
+            <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_ij3ByUQXlcvwJhbUSPkoqMPf"
+                data-amount="2000"
+                data-name="Demo Site"
+                data-description="2 widgets"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto"
+                data-zip-code="true"
+                data-currency="eur">
+            </script>
+        </form>
+        <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+                    function addLang(id) {
+
+                        $(document).ready(function () {
+                            $.ajax({
+                                url: "include/addLang.php",
+                                type: "post",
+                                data: {
+                                    id: id
+                                },
+                                success: function (data) {
+                                    alert("success");
+                                }
+
+                            });
+                        });
+                    }
 
         </script>
     </body>

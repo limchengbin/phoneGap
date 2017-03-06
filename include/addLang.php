@@ -18,6 +18,7 @@ $language_name = $lang[0][1];
 $language_price = $lang[0][2];
 
 
+
 $query2 = "INSERT INTO shopping_cart (language_id,language_name,language_price) VALUES (:id,:name,:price)";
 $statement2 = $db->prepare($query2);
 $statement2->bindValue(":id", $id);
