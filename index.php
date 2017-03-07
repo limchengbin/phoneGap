@@ -310,7 +310,7 @@ require_once("include/database.php");
                         <div class="team-member">
                             <img src="img/team/jin.jpg" class="img-responsive img-circle" alt="">
                             <h4>Jin</h4>
-                            <p class="text-muted">Front-end, Back-end helper</p>
+                            <p class="text-muted">Front-end, Back-end coder</p>
                             <ul class="list-inline social-buttons">
                                 <li><a href="#"><i class="fa fa-twitter"></i></a>
                                 </li>
