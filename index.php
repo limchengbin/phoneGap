@@ -1,5 +1,5 @@
 <?php
-    require_once("include/database.php");
+require_once("include/database.php");
 ?>
 
 
@@ -29,7 +29,7 @@
         <!-- Java Script -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+
         <!-- Theme CSS -->
         <link href="css/agency.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
@@ -39,10 +39,29 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
         <![endif]-->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 
     </head>
 
     <body id="page-top" class="index">
+
+        <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+        <script>
+            $(window).scroll(function () {
+                if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                    $('#return-to-top').fadeIn(200);    // Fade in the arrow
+                } else {
+                    $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+                }
+            });
+            $('#return-to-top').click(function () {      // When arrow is clicked
+                $('body,html').animate({
+                    scrollTop: 0                       // Scroll to top of body
+                }, 500);
+            });
+        </script>
+
 
         <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -52,7 +71,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">JAB</a>
+                    <a id="movelogo" class="navbar-brand page-scroll" href="#page-top"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,11 +80,8 @@
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
-                        <li>                        
-                            <?php include('include/userstatus.php'); ?>
-                        </li>
                         <li>
-                            <a class="page-scroll" href="#services">Services</a>
+                            <?php include('include/userstatus.php'); ?>
                         </li>
                         <li>
                             <a class="page-scroll" href="#portfolio">Courses</a>
@@ -94,57 +110,20 @@
             <div class="container">
                 <div class="intro-text">
                     <div class="intro-heading">Learn New Languages Online</div>
-                    <div class="intro-lead-in">With Cute Real Teachers In Live Classes</div>
-                    <a href="#services" class="page-scroll btn btn-xl">Register</a>
+                    <div class="intro-lead-in">"The limits of my language are the limits of my world"</div>
+                    <a href="#portfolio" class="page-scroll btn btn-xl">Start Now</a>
                 </div>
             </div>
         </header>
 
-        <!-- Services Section -->
-        <section id="services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Services</h2>
-                        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="service-heading">E-Commerce</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="service-heading">Responsive Design</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="service-heading">Web Security</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Portfolio Grid Section -->
         <section id="portfolio" class="bg-light-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Portfolio</h2>
-                        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                        <h2 class="section-heading">Language Courses</h2>
+                        <h3 class="section-subheading text-muted">Pick a course in a worth deal...</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -242,7 +221,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">About</h2>
-                        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                        <h3 class="section-subheading text-muted">Know more about us</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -254,11 +233,11 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4>2009-2011</h4>
-                                        <h4 class="subheading">Our Humble Beginnings</h4>
+                                        <h4>Beginnings</h4>
+                                        <h4 class="subheading">The first mobile app project</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                        <p class="text-muted">This is a very interesting work, our first time trying to make an mobile app. We found a lot of tough and fun!</p>
                                     </div>
                                 </div>
                             </li>
@@ -268,11 +247,11 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4>March 2011</h4>
-                                        <h4 class="subheading">An Agency is Born</h4>
+                                        <h4>First Idea</h4>
+                                        <h4 class="subheading">Using Javascript</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                        <p class="text-muted">We are thinking of using javascript to connect database at first because this is the most correct way to do it, but we never learn that before so we try to use another way to do it now!</p>
                                     </div>
                                 </div>
                             </li>
@@ -282,33 +261,33 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4>December 2012</h4>
-                                        <h4 class="subheading">Transition to Full Service</h4>
+                                        <h4>Now</h4>
+                                        <h4 class="subheading">Explanation of this website</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                        <p class="text-muted">This website is a online language learning website, you can purchase a course and start learning whenever you like. Just simply click the button!</p>
                                     </div>
                                 </div>
                             </li>
                             <li class="timeline-inverted">
                                 <div class="timeline-image">
-                                    <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                                    <img class="img-circle img-responsive" src="img/about/4.png" alt="">
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4>July 2014</h4>
-                                        <h4 class="subheading">Phase Two Expansion</h4>
+                                        <h4>Lastly</h4>
+                                        <h4 class="subheading">What we hope</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                        <p class="text-muted">We try our best to make the website to be simple so that user can access easily even the old people can also learn any of the language from our website!</p>
                                     </div>
                                 </div>
                             </li>
                             <li class="timeline-inverted">
                                 <div class="timeline-image">
-                                    <h4>Be Part
-                                        <br>Of Our
-                                        <br>Story!</h4>
+                                    <h4>Learn
+                                        <br>Language
+                                        <br>here!</h4>
                                 </div>
                             </li>
                         </ul>
@@ -331,7 +310,7 @@
                         <div class="team-member">
                             <img src="img/team/jin.jpg" class="img-responsive img-circle" alt="">
                             <h4>Jin</h4>
-                            <p class="text-muted">Lead Designer</p>
+                            <p class="text-muted">Front-end, Back-end helper</p>
                             <ul class="list-inline social-buttons">
                                 <li><a href="#"><i class="fa fa-twitter"></i></a>
                                 </li>
@@ -346,7 +325,7 @@
                         <div class="team-member">
                             <img src="img/team/alvin.jpg" class="img-responsive img-circle" alt="">
                             <h4>Alvin</h4>
-                            <p class="text-muted">Lead Marketer</p>
+                            <p class="text-muted">Front-end designer, Database builder</p>
                             <ul class="list-inline social-buttons">
                                 <li><a href="#"><i class="fa fa-twitter"></i></a>
                                 </li>
@@ -361,7 +340,7 @@
                         <div class="team-member">
                             <img src="img/team/bin.jpg" class="img-responsive img-circle" alt="">
                             <h4>Bin</h4>
-                            <p class="text-muted">Lead Developer</p>
+                            <p class="text-muted">PHP connection</p>
                             <ul class="list-inline social-buttons">
                                 <li><a href="#"><i class="fa fa-twitter"></i></a>
                                 </li>
@@ -375,39 +354,12 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                        <p class="large text-muted">The best and tacit team ever!</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Clients Aside -->
-        <aside class="clients">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#">
-                            <img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#">
-                            <img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#">
-                            <img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#">
-                            <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </aside>
 
         <!-- Contact Section -->
         <section id="contact">
@@ -458,7 +410,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="copyright">Copyright &copy; Your Website 2016</span>
+                        <span class="copyright">&copy; 2017 JAB Language School ALL RIGHT RESERVED</span>
                     </div>
                     <div class="col-md-4">
                         <ul class="list-inline social-buttons">
@@ -500,8 +452,8 @@
                             <div class="col-lg-8 col-lg-offset-2">
                                 <div class="modal-body">
                                     <!-- Project Details Go Here -->
-                                    <h2>Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <h2>Read from database(language)</h2>
+                                    <p class="item-intro text-muted">other language</p>
                                     <img class="img-responsive img-centered" src="img/portfolio/roundicons-free.png" alt="">
                                     <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <p>
