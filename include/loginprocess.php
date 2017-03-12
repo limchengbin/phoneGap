@@ -1,4 +1,6 @@
 <?php
+
+
 require_once '../includes/database.php';
 //include_once '../validate.php';
 //include_once '../session.php';

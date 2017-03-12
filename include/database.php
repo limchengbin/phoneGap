@@ -1,6 +1,7 @@
 <?php
-
-$dsn = "mysql:host=localhost;dbname=JAB";
+session_start();
+$_SESSION['id'] = 1;
+$dsn = "mysql:host=localhost;dbname=phonegap";
 $username = 'root';
 $password = '';
 
