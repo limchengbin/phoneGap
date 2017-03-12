@@ -10,11 +10,11 @@ if (isset($_SESSION['login_user'])) {
     echo '<div class="formholder">';
     echo '<div class="randompad">';
     echo '<fieldset>';
-    echo '<form name="login" action="loginprocess.php" method="post">';
+    echo '<form name="login" action="include/loginprocess.php" method="post">';
     echo '<label>Email</label>';
     echo '<input required name="email" type="email" placeholder="example@example.com" />';
     echo '<label>Password</label>';
-    echo '<input required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" type="password" />';
+    echo '<input required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" type="password" />';
     echo '<input type="submit" value="Login" />';
     echo '<a  id="regbutton" href="register.php"><input type="button" value="Register" /></a>';
     echo '</form>';

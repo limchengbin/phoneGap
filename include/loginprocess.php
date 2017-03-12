@@ -1,63 +1,56 @@
 <?php
 
+if (isset($_SESSION['login_user'])) {
+    header("Location: index.php");
+    exit;
+}
 
-require_once '../includes/database.php';
-//include_once '../validate.php';
-//include_once '../session.php';
+if (isset($_POST['email'])) {
 
-$form_errors = array();
-$required_fields = array('username', 'password');
-$form_errors = array_merge($form_errors, check_empty_fields($required_fields));
-$fields_to_check_length = array('username' => 3, 'password' => 8);
-$form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
 
-if (empty($form_errors)) {
-    $username = FILTER_INPUT(INPUT_POST, "username", FILTER_SANITIZE_STRING);
-    $password = FILTER_INPUT(INPUT_POST, "password", FILTER_SANITIZE_STRING);
-    
-    //check if user exist in the database
-    $query = "SELECT * FROM members WHERE username = :username";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':username', $username);
-    $statement->execute();
-    $row = $statement->fetch();
-    $statement->closeCursor();
+    require_once('database.php');
 
-    //If row exists (returned)
-    if (!empty($row)) {
-        //get hashed password          
-        $hashed_password = $row['password'];
-        //get member ID
-        $id = $row['memberID'];
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
-        //get username
-        $username = $row['username'];
-        //get email
-        $email = $row['email'];
-        //get userType
-        $userType = $row['userType'];
-        
-        if (password_verify($password, $hashed_password)) {
-            //echo "2";die();
-            session_start();
-            $_SESSION['memberID'] = $id;
-            $_SESSION['username'] = $username;
-            $_SESSION['email'] = $email;
-            $_SESSION['userType'] = $userType;
-            
-            //header("location: ../home.php");
+        $query = "SELECT * FROM member WHERE email=:email";
+        $statement = $db->prepare($query);
+        $statement->bindValue(":email", $email);
+        $statement->execute();
+        $result_array = $statement->fetchAll();
+        $statement->closeCursor();
+
+        if (count($result_array)) {
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            foreach ($result_array as $result):
+
+                if (password_verify($result['password'], $hashed_password)) {
+                    $message = "Either the email or password is incorrect. Try it again.";
+                } else {
+                    session_start();
+                    $_SESSION['login_user'] = $email;
+                    $_SESSION['user_status'] = $result['user_status'];
+                    if ($result['user_status'] == 1) {
+                        header("Location:profile.php");
+                    } else {
+                        header("Location:myprofile.php");
+                    }
+                    exit();
+                }
+            endforeach;
         } else {
-            $form_errors[] = "Invalid Password";
-            //include ("../login/login.php");
+            $message = "Either the email or password is incorrect. Try it again.";
         }
     } else {
-        $form_errors[] = "Invalid Account";
-        //include("../login/login.php");
-        exit();
+        if (count($form_errors) == 1) {
+            $message = "There was one error in the form";
+        } else {
+            $message = "There were " . count($form_errors) . " errors in the form";
+        }
     }
-} else {
-    //header("location: ../login/login.php");
-    //include ('../login/login.php');
+
+
+if (isset($message)) {
+    include ("index.php");
     exit();
 }
-?>
