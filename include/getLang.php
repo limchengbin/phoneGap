@@ -7,3 +7,6 @@ $statement = $db->prepare($query);
 $statement->execute();
 $language = $statement->fetchAll();
 $statement->closeCursor();
+
+
+

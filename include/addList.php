@@ -24,3 +24,10 @@ $statement3 = $db->prepare($query3);
 $statement3-> bindValue(":memberID" ,1);
 $statement3->execute();
 $statement3->closeCursor();
+
+
+
+echo "<SCRIPT type='text/javascript'> 
+        alert('order made');
+        window.location = '../index.php'
+    </SCRIPT>";
