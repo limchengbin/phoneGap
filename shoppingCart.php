@@ -51,7 +51,7 @@ $_SESSION['total_price'] = 0;
             }
             
             footer{
-                margin-top: 100px;
+                margin-top: 300px;
             }
         </style>
     </head>
