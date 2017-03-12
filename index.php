@@ -128,8 +128,8 @@ require_once("include/getLang.php");
                 </div>
                 <div class="row">
                     <?php foreach ($language as $language) : ?>
-                        <div class="col-md-4 col-sm-6 portfolio-item">
-                            <a href="specificLanguage.php?id=<?php $language['language_id'] ?>" class="portfolio-link" >
+                        <div class="col-md-4 col-sm-6 portfolio-item">   
+                                <a href="id=<?php echo $language['language_id']?>#portfolioModal1" class="portfolio-link" data-toggle="modal">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-p lus fa-3x"></i>
@@ -468,7 +468,8 @@ require_once("include/getLang.php");
                             <div class="col-lg-8 col-lg-offset-2">
                                 <div class="modal-body">
                                     <!-- Project Details Go Here -->
-                                    <h2>Read from database(language)</h2>
+                                    
+                                    <h2>Read from database(language)<?php echo $langID ?></h2>
                                     <p class="item-intro text-muted">other language</p>
                                     <img class="img-responsive img-centered" src="img/portfolio/roundicons-free.png" alt="">
                                     <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
