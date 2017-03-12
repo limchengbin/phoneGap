@@ -213,22 +213,7 @@ $_SESSION['total_price'] = 0;
                 });
             }
 
-            function payment(price) {
-
-                $(document).ready(function () {
-                    $.ajax({
-                        url: "includes/make_order.php",
-                        type: "post",
-                        data: {
-                            price: price
-                        },
-                        success: function (data) {
-                            alert("order made");
-                            window.location = "index.php";
-                        }
-                    });
-                });
-            }
+            
 
 
         </script>

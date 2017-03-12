@@ -11,10 +11,11 @@ $statement->closeCursor();
 
 
 foreach ($list as $list):
-    $query2 = "INSERT INTO payment_completed (language_id,member_id) VALUES (:langID,:memberID);";
+    $query2 = "INSERT INTO payment_completed (language_id,member_id,current_lesson) VALUES (:langID,:memberID,:index);";
     $statement2 = $db->prepare($query2);
     $statement2->bindValue(":langID", $list['language_id']);
     $statement2->bindValue(":memberID", $list['member_id']);
+    $statement2->bindValue(":index",1);
     $statement2->execute();
     $statement2->closeCursor();
 endforeach;

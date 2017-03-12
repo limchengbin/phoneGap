@@ -50,9 +50,7 @@ if (empty($check)) {
         echo "language is in the basket";
     }
 } else {
-
-
-    echo "language bought";
+     echo "../language.php";
 }
 
 

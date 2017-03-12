@@ -2,7 +2,7 @@
 
 require_once("database.php");
 
-$query = "SElECT * from language;";
+$query = "SELECT * from language;";
 $statement = $db->prepare($query);
 $statement->execute();
 $language = $statement->fetchAll();
