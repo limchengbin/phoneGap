@@ -49,7 +49,7 @@ $_SESSION['total_price'] = 0;
             .cart{
                 margin-top: 300px;
             }
-            
+
             footer{
                 margin-top: 300px;
             }
@@ -64,7 +64,7 @@ $_SESSION['total_price'] = 0;
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a id="movelogo" class="navbar-brand page-scroll" href="#page-top"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
+                    <a id="movelogo" class="navbar-brand page-scroll" href="index.php"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -104,7 +104,7 @@ $_SESSION['total_price'] = 0;
                 <div class="bigcart"></div>
                 <h1>Your shopping cart</h1>
                 <?php
-                if (!isset($_SESSION['user'])) {
+                if (!isset($_SESSION['login_user'])) {
                     echo 'You Must Log In or Register To Place Order';
                 }
                 ?>
@@ -138,9 +138,9 @@ $_SESSION['total_price'] = 0;
                             echo '<span class="price " id="homemade" style="font-family: "Acmet", cursive;color:black;">' . $_SESSION['total_price'] . '</span>';
                             echo '</li>';
 
-//                            if (isset($_SESSION['user'])) {
-                            echo '<form action = "include/addList.php" style = "text-align: center" method = "post">';
-                            echo '<script
+                            if (isset($_SESSION['login_user'])) {
+                                echo '<form action = "include/addList.php" style = "text-align: center" method = "post">';
+                                echo '<script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_ij3ByUQXlcvwJhbUSPkoqMPf"
                                 data-amount="' . $_SESSION['total_price'] * 100 . '"
@@ -151,7 +151,7 @@ $_SESSION['total_price'] = 0;
                                 data-zip-code="true"
                                 data-currency="eur">
                                 </script></form>';
-//                        }
+                            }
                         } else {
                             echo "There are is product in cart";
                         }
@@ -213,7 +213,7 @@ $_SESSION['total_price'] = 0;
                 });
             }
 
-            
+
 
 
         </script>

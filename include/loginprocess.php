@@ -18,6 +18,7 @@ if (isset($_POST['email'])) {
         $statement->execute();
         $result_array = $statement->fetchAll();
         $statement->closeCursor();
+        
 
         if (count($result_array)) {
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -32,6 +33,7 @@ if (isset($_POST['email'])) {
                     $_SESSION['user_status'] = $result['user_status'];
                     if ($result['user_status'] == 1) {
                         header("Location:profile.php");
+                        
                     } else {
                         header("Location:myprofile.php");
                     }
