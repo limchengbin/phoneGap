@@ -1,7 +1,8 @@
 <?php
 
+
 if (isset($_SESSION['login_user'])) {
-    echo '<a class="page-scroll" href="./logout.php"><img src="img/logout.png" style="width:30px;" /></a>';
+    echo '<a class="page-scroll" href="./logout.php" id="logoutform"><img src="img/logout.png" style="width:30px;" /></a>';
 } else {
     echo '<a class="page-scroll" href="#" id="loginform"><img src="img/loginuser.png" style="width:30px;" /></a>';
     echo '<div class="login">';

@@ -1,4 +1,25 @@
 /*login css*/
+
+#logoutform {
+    background-color: white;
+    box-shadow:10px 10px 20px black;
+    border-radius: 30px;
+}
+
+#logoutform:hover {
+    background-color: #fed136;
+}
+
+#loginform {
+    background-color: #ecf0f1;
+    box-shadow:5px 5px 20px black;
+    border-radius: 30px;
+}
+
+#loginform:hover {
+    background-color: #fed136;
+}
+
 fieldset {
     border: none;
 }
@@ -14,7 +35,7 @@ fieldset {
     position: absolute;
     width: 350px;
     display: none;
-    margin-left: -290px;
+    margin-left: 5px;
     z-index: 2;
 }
 
@@ -24,7 +45,7 @@ fieldset {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-bottom: 15px solid #ECF0F1;
-    right: 3%;
+    left: 2%;
     position: absolute;
     top: -10px;
 }

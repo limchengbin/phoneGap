@@ -50,7 +50,7 @@ and open the template in the editor.
                                     id: id
                                 },
                                 success: function (data) {
-                                    alert("success");
+                                    alert(data);
                                 }
 
                             });

@@ -1,5 +1,4 @@
 <?php
-require_once("include/database.php");
 require_once("include/getLang.php");
 ?>
 
@@ -84,6 +83,9 @@ require_once("include/getLang.php");
                         <li>
                             <?php include('include/userstatus.php'); ?>
                         </li>
+                        <li>                        
+                            <?php include('include/loginlogout.php'); ?>
+                        </li>
                         <li>
                             <a class="page-scroll" href="#portfolio">Courses</a>
                         </li>
@@ -95,9 +97,6 @@ require_once("include/getLang.php");
                         </li>
                         <li>
                             <a class="page-scroll" href="#contact">Contact</a>
-                        </li>
-                        <li>                        
-                            <?php include('include/loginlogout.php'); ?>
                         </li>
                     </ul>
                 </div>
@@ -130,7 +129,7 @@ require_once("include/getLang.php");
                 <div class="row">
                     <?php foreach ($language as $language) : ?>
                         <div class="col-md-4 col-sm-6 portfolio-item">
-                            <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                            <a href="specificLanguage.php?id=<?php $language['language_id'] ?>" class="portfolio-link" >
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-p lus fa-3x"></i>
@@ -139,12 +138,95 @@ require_once("include/getLang.php");
                                 <img src="img/default.jpg" class="img-responsive" alt="">
                             </a>
                             <div class="portfolio-caption">
-                                <h4><?php echo $language['language_name']  ?></h4>
-                                
+                                <h4><?php echo $language['language_name'] ?></h4>
+
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Round Icons</h4>
+                            <p class="text-muted">Graphic Design</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Startup Framework</h4>
+                            <p class="text-muted">Website Design</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Treehouse</h4>
+                            <p class="text-muted">Website Design</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="img/portfolio/golden.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Golden</h4>
+                            <p class="text-muted">Website Design</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="img/portfolio/escape.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Escape</h4>
+                            <p class="text-muted">Website Design</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Dreams</h4>
+                            <p class="text-muted">Website Design</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -244,7 +326,7 @@ require_once("include/getLang.php");
                         <div class="team-member">
                             <img src="img/team/jin.jpg" class="img-responsive img-circle" alt="">
                             <h4>Jin</h4>
-                            <p class="text-muted">Front-end & Back-end helper, Developer</p>
+                            <p class="text-muted">Front-end, Back-end helper</p>
                             <ul class="list-inline social-buttons">
                                 <li><a href="#"><i class="fa fa-twitter"></i></a>
                                 </li>
@@ -273,8 +355,8 @@ require_once("include/getLang.php");
                     <div class="col-sm-4">
                         <div class="team-member">
                             <img src="img/team/bin.jpg" class="img-responsive img-circle" alt="">
-                            <h4>Too handsome Bin,Tak boleh tahan</h4>
-                            <p class="text-muted">PHP connection, Back-end coder</p>
+                            <h4>Bin</h4>
+                            <p class="text-muted">PHP connection, Data Display</p>
                             <ul class="list-inline social-buttons">
                                 <li><a href="#"><i class="fa fa-twitter"></i></a>
                                 </li>

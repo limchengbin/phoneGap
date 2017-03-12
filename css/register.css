@@ -1,0 +1,14 @@
+body {
+    background-image: url("../img/register-bg.jpg");
+
+}
+
+.form-group label {
+    color:white;
+    font-family:"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h1 {
+    color: whitesmoke;
+    font-family:"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
