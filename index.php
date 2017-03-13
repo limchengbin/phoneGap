@@ -1,6 +1,7 @@
 <?php
 require_once("include/getLang.php");
 require_once("include/checkStatus.php");
+$_SESSION['num']= false;
 ?>
 
 
@@ -98,6 +99,9 @@ require_once("include/checkStatus.php");
                         </li>
                         <li>
                             <a class="page-scroll" href="#contact">Contact</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="shoppingCart.php">Shopping Cart</a>
                         </li>
                     </ul>
                 </div>

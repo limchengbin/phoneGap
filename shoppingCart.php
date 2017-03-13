@@ -91,6 +91,9 @@ $_SESSION['total_price'] = 0;
                         <li>
                             <a class="page-scroll" href="#contact">Contact</a>
                         </li>
+                        <li>
+                            <a class="page-scroll" href="shoppingCart.php">Shopping Cart</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -153,7 +156,7 @@ $_SESSION['total_price'] = 0;
                                 </script></form>';
                             }
                         } else {
-                            echo "There are is product in cart";
+                            echo "There are no product in cart";
                         }
                         ?>
 

@@ -14,4 +14,3 @@ try {
     $error_message = $ex->getMessage();
     exit() ;
 }
-

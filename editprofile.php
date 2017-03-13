@@ -133,6 +133,9 @@ endforeach;
                         <li>
                             <a class="page-scroll" href="index.php#contact">Contact</a>
                         </li>
+                        <li>
+                            <a class="page-scroll" href="shoppingCart.php">Shopping Cart</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

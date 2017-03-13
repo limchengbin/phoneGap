@@ -169,6 +169,9 @@ and open the template in the editor.
                         <li>
                             <a class="page-scroll" href="index.php#contact">Contact</a>
                         </li>
+                        <li>
+                            <a class="page-scroll" href="shoppingCart.php">Shopping Cart</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

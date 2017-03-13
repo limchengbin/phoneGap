@@ -110,7 +110,7 @@ and open the template in the editor.
                 right: -20px;
                 transition: 0.5s;
             }
-            
+
             #previous:hover span{
                 padding-left: 25px;
             }
@@ -123,7 +123,7 @@ and open the template in the editor.
                 opacity: 1;
                 right: 0;
             }
-            
+
             #previous:hover span:after{
                 left: 0;
                 opacity: 1;
@@ -167,6 +167,9 @@ and open the template in the editor.
                             </li>
                             <li>
                                 <a class="page-scroll" href="index.php#contact">Contact</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="shoppingCart.php">Shopping Cart</a>
                             </li>
                         </ul>
                     </div>
