@@ -128,7 +128,7 @@ require_once("include/checkStatus.php");
                         },
                         success: function (data) {
                             if (data === "../language.php") {
-                                window.location = "language.php?id="+id;
+                                window.location = "courses.php?id="+id;
                             } else {
                                 alert(data);
                             }
