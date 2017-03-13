@@ -162,9 +162,6 @@ and open the template in the editor.
                             <a class="page-scroll" href="index.php#portfolio">Courses</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="index.php#map">Map</a>
-                        </li>
-                        <li>
                             <a class="page-scroll" href="index.php#team">Team</a>
                         </li>
                         <li>
