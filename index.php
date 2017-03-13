@@ -1,7 +1,6 @@
 <?php
 require_once("include/getLang.php");
 require_once("include/checkStatus.php");
-$_SESSION['num']= false;
 ?>
 
 
@@ -132,15 +131,24 @@ $_SESSION['num']= false;
                         },
                         success: function (data) {
                             if (data === "../language.php") {
-                                window.location = "courses.php?id="+id;
+                                window.location = "courses.php?id=" + id;
                             } else {
-                                alert(data);
+
+                                $("#alert_template button").after('<span>~' + data + '</span><br>');
+                                $('#alert_template').fadeIn('fast');
+
+                                $('#alert_template .close').click(function (e) {
+                                    $('#alert_template').fadeOut('fast');
+                                    $("#alert_template span").remove();
+                                    $("#alert_template br").remove();
+                                });
                             }
                         }
 
                     });
                 });
             }
+
 
         </script>
         <!-- Portfolio Grid Section -->
@@ -152,8 +160,12 @@ $_SESSION['num']= false;
                         <h3 class="section-subheading text-muted">Pick a course in a worth deal...</h3>
                     </div>
                 </div>
+
                 <div class="row">
                     <?php foreach ($language as $language) : ?>
+                        <div class="alert alert-info" id="alert_template" style="display: none;">
+                            <button type="button" class="close">×</button>
+                        </div>
                         <div  class="col-md-4 col-sm-6 portfolio-item">   
                             <a href="" onclick="addProduct(<?php echo $language['language_id'] ?>);" class="portfolio-link" data-toggle="modal">
                                 <div class="portfolio-hover">
@@ -167,17 +179,19 @@ $_SESSION['num']= false;
                                 <h4><?php echo $language['language_name'] ?></h4>
                                 <h5><?php echo $language['language_des'] ?>
                                     <?php
-                                    $x = 0;
-                                    $match = false;
-                                    while ($x < sizeof($lang)) {
+                                    if (isset($_SESSION['memberID'])) {
+                                        $x = 0;
+                                        $match = false;
+                                        while ($x < sizeof($lang)) {
 
-                                        if ($lang[$x]['language_id'] == $language['language_id']) {
-                                            $match = true;
+                                            if ($lang[$x]['language_id'] == $language['language_id']) {
+                                                $match = true;
+                                            }
+                                            $x++;
                                         }
-                                        $x++;
-                                    }
-                                    if ($match) {
-                                        echo "(bought)";
+                                        if ($match) {
+                                            echo "(bought)";
+                                        }
                                     }
                                     ?>
                                 </h5>
@@ -230,14 +244,14 @@ $_SESSION['num']= false;
                                 <div class="col-sm-4">
                                     <div class="team-member">
                                         <img src="img/team/bin.jpg" class="img-responsive img-circle" alt="">
-                                        <h4>Bin</h4>
+                                        <h4>Handsome Bin</h4>
                                         <p class="text-muted">PHP connection, Data Display</p>
                                         <ul class="list-inline social-buttons">
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                                            <li><a href="https://twitter.com/limchengbin?lang=en" target="_blank"><i class="fa fa-twitter"></i></a>
                                             </li>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                                            <li><a href="https://www.facebook.com/binny95?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>
                                             </li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                                            <li><a href="https://www.linkedin.com/in/cheng-bin-lim-4168ba107/" target="_blank"><i class="fa fa-linkedin"></i></a>
                                             </li>
                                         </ul>
                                     </div>
