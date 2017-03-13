@@ -1,3 +1,6 @@
+<?php
+require_once("include/langDetail.php");
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -48,62 +51,178 @@ and open the template in the editor.
                 background-repeat: no-repeat;
                 background-position: center;
                 position: absolute;
+                margin-right: 200px;
                 margin-top: 200px;
                 height: 60%;
+                width: 100%;
             }
 
             body{
                 background-color: #eee;
             }
-        </style>
-    </head>
-    <body>
-        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+            #board h1{
+                text-align: center;
+                color: white;
+            }
+
+            #board h2{
+                text-align: center;
+                color: white;
+            }
+
+            #previous, #next{
+                margin-top: 150px;
+            }
+
+            #previous, #next{
+                display: block;
+                border-radius: 2px;
+                background-color:  #6caee0;
+                color: #ffffff;
+                font-weight: bold;
+                box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+                padding: 15px 35px;
+                border: 0;
+                margin: 50px auto 0;
+                cursor: pointer;
+            }
+
+            #previous span, #next span {
+                position: relative;
+                transition: 0.5s;
+            }
+
+            #previous span:after{
+                content: '«';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -20px;
+                transition: 0.5s;
+            }
+
+            #next span:after {
+                content: '»';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            
+            #previous:hover span{
+                padding-left: 25px;
+            }
+
+            #next:hover span {
+                padding-right: 25px;
+            }
+
+            #next:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+            
+            #previous:hover span:after{
+                left: 0;
+                opacity: 1;
+            }
+
+            #previous:active, #next:active{
+                box-shadow: inset 0
+                </style>
+            </head>
+            <body>
+                <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header page-scroll">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                            </button>
+                            <a id="movelogo" class="navbar-brand page-scroll" href="index.php#page-top"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="hidden">
+                                <a href="#page-top"></a>
+                            </li>
+                            <li>
+                                <?php include('include/userstatus.php'); ?>
+                            </li>
+                            <li>                        
+                                <?php include('include/loginlogout.php'); ?>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="index.php#portfolio">Courses</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="index.php#about">About</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="index.php#team">Team</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="index.php#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                    </button>
-                    <a id="movelogo" class="navbar-brand page-scroll" href="index.php#page-top"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
-                </div>
+                <div class="row">
+                    <div id="board" class="col-md-8">
+                        <h1><?php echo $_SESSION['name'] ?></h1>
+                        <br>
+                        <h2><?php echo $language3[2] ?></h2>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li>
-                            <?php include('include/userstatus.php'); ?>
-                        </li>
-                        <li>                        
-                            <?php include('include/loginlogout.php'); ?>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="index.php#portfolio">Courses</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="index.php#about">About</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="index.php#team">Team</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="index.php#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
 
-        <div class="container">
-            <div class="row">
-                <div id="board" class="col-md-8"></div>
+                        <center>
+                            <button id="previous" onclick="previous()" ><span>previous</span></button>
+                            <button id="next" onclick="next()"><span>next</span></button>
+                        </center>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
+
+    <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+                                function previous() {
+
+                                    $(document).ready(function () {
+                                        $.ajax({
+                                            url: "include/changeLesson.php",
+                                            type: "post",
+                                            success: function (data) {
+
+                                                $("#board").html(data);
+                                            }
+                                        });
+                                    });
+                                }
+
+                                function next() {
+
+                                    $(document).ready(function () {
+                                        $.ajax({
+                                            url: "include/nextLesson.php",
+                                            type: "post",
+                                            success: function (data) {
+
+                                                $("#board").html(data);
+                                            }
+                                        });
+                                    });
+                                }
+    </script>
+
 
 </html>

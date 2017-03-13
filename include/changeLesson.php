@@ -26,7 +26,13 @@ $statement7->closeCursor();
 
 
 
-echo '<h1>'. $_SESSION['name'] .'</h1>
-            <br>
-            <h2>'. $language7[2] .'</h2>';
+echo '<h1>'.$_SESSION['name'].'</h1>
+                        <br>
+                        <h2>'. $language7[2] .'</h2>
+
+
+                        <center>
+                            <button id="previous" onclick="previous()" ><span>previous</span></button>
+                            <button id="next" onclick="next()"><span>next</span></button>
+                        </center>';
 
