@@ -10,7 +10,7 @@ if (isset($_SESSION['login_user'])) {
     echo '<div class="formholder">';
     echo '<div class="randompad">';
     echo '<fieldset>';
-    echo '<form name="login" action="include/loginprocess.php" method="post">';
+    echo '<form name="login" action="loginprocess.php" method="post">';
     echo '<label>Email</label>';
     echo '<input required name="email" type="email" placeholder="example@example.com" />';
     echo '<label>Password</label>';

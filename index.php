@@ -1,6 +1,10 @@
 <?php
 require_once("include/getLang.php");
 require_once("include/checkStatus.php");
+
+if (!isset($message)) {
+    $message = "";
+}
 ?>
 
 
@@ -112,6 +116,8 @@ require_once("include/checkStatus.php");
                     <div class="intro-heading">Learn New Languages Online</div>
                     <div class="intro-lead-in">"The limits of my language are the limits of my world"</div>
                     <a href="#portfolio" class="page-scroll btn btn-xl">Start Now</a>
+                    <br>
+                    <div class="intro-lead-in" id="messageDisplay"><?php echo $message; ?></div>
                 </div>
             </div>
         </header>

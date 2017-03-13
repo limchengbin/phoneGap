@@ -8,7 +8,7 @@ if (isset($_SESSION['login_user'])) {
 if (isset($_POST['email'])) {
 
 
-    require_once('database.php');
+    require_once('include/database.php');
 
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
@@ -34,9 +34,9 @@ if (isset($_POST['email'])) {
 
                     
                     if ($result['user_status'] == 1) {
-                        header("Location: ../profile.php");
+                        header("Location: profile.php");
                     } else {
-                        header("Location: ../profile.php");
+                        header("Location: profile.php");
                     }
                     exit();
                 }
