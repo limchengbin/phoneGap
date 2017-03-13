@@ -1,7 +1,7 @@
 <?php
 require_once("include/getLang.php");
 require_once("include/checkStatus.php");
-$_SESSION['num']= false;
+$_SESSION['num'] = false;
 ?>
 
 
@@ -42,7 +42,6 @@ $_SESSION['num']= false;
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
         <![endif]-->
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
 
     </head>
 
@@ -92,9 +91,6 @@ $_SESSION['num']= false;
                             <a class="page-scroll" href="#portfolio">Courses</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#about">About</a>
-                        </li>
-                        <li>
                             <a class="page-scroll" href="#team">Team</a>
                         </li>
                         <li>
@@ -132,7 +128,7 @@ $_SESSION['num']= false;
                         },
                         success: function (data) {
                             if (data === "../language.php") {
-                                window.location = "courses.php?id="+id;
+                                window.location = "courses.php?id=" + id;
                             } else {
                                 alert(data);
                             }

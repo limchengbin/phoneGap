@@ -83,7 +83,7 @@ $_SESSION['total_price'] = 0;
                             <a class="page-scroll" href="#portfolio">Courses</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#about">About</a>
+                            <a class="page-scroll" href="index.php#map">Map</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="#team">Team</a>

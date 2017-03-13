@@ -125,7 +125,7 @@ endforeach;
                             <a class="page-scroll" href="index.php#portfolio">Courses</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="index.php#about">About</a>
+                            <a class="page-scroll" href="index.php#map">Map</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="index.php#team">Team</a>
@@ -183,13 +183,13 @@ endforeach;
                             <div class="form-group">
                                 <label class="control-label col-sm-3">First Name <span class="text-danger">*</span></label>
                                 <div class="col-md-8 col-sm-9">
-                                    <input type="text" class="form-control" name="yourFirstName" id="mem_name" placeholder="Enter your Name here" value="<?php echo $edit_firstname?>">
+                                    <input type="text" class="form-control" name="yourFirstName" id="mem_name" placeholder="Enter your Name here" value="<?php echo $edit_firstname ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Last Name <span class="text-danger">*</span></label>
                                 <div class="col-md-8 col-sm-9">
-                                    <input type="text" class="form-control" name="yourLastName" id="mem_name" placeholder="Enter your Name here" value="<?php echo $edit_lastname?>">
+                                    <input type="text" class="form-control" name="yourLastName" id="mem_name" placeholder="Enter your Name here" value="<?php echo $edit_lastname ?>">
                                 </div>
                             </div>
 
@@ -199,7 +199,7 @@ endforeach;
                                 <div class="col-md-5 col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                        <input type="text" class="form-control" name="yourMobile" id="contactnum" placeholder="Enter your Primary contact no." value="<?php echo $edit_mobile?>">
+                                        <input type="text" class="form-control" name="yourMobile" id="contactnum" placeholder="Enter your Primary contact no." value="<?php echo $edit_mobile ?>">
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@ endforeach;
                                 <label class="control-label col-sm-3">First Language <br>
                                     <small>(required)</small></label>
                                 <div class="col-md-5 col-sm-8">
-                                    <input type="text" class="form-control" name="firstLanguage" id="firstLanguage" placeholder="First Language" value="<?php echo $edit_firstlanguage?>">
+                                    <input type="text" class="form-control" name="firstLanguage" id="firstLanguage" placeholder="First Language" value="<?php echo $edit_firstlanguage ?>">
                                 </div>
                             </div>
 
@@ -216,7 +216,7 @@ endforeach;
                                 <label class="control-label col-sm-3">City. <br>
                                     <small>(if any)</small></label>
                                 <div class="col-md-5 col-sm-8">
-                                    <input type="text" class="form-control" name="city" id="city" placeholder="City" value="<?php echo $edit_city?>">
+                                    <input type="text" class="form-control" name="city" id="city" placeholder="City" value="<?php echo $edit_city ?>">
                                 </div>
                             </div>
 
@@ -478,16 +478,6 @@ endforeach;
                                                 <option value="ZW">Zimbabwe</option>    
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Profile Photo <br>
-                                    <small>(optional)</small></label>
-                                <div class="col-md-5 col-sm-8">
-                                    <div class="input-group"> <span class="input-group-addon" id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
-                                        <input type="file" name="file_nm" id="file_nm" class="form-control upload" placeholder="" aria-describedby="file_upload">
                                     </div>
                                 </div>
                             </div>

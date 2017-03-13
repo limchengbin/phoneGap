@@ -39,6 +39,7 @@ and open the template in the editor.
         <!-- Theme CSS -->
         <link href="css/agency.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="css/profilepic.css" rel="stylesheet" type="text/css"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -161,7 +162,7 @@ and open the template in the editor.
                             <a class="page-scroll" href="index.php#portfolio">Courses</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="index.php#about">About</a>
+                            <a class="page-scroll" href="index.php#map">Map</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="index.php#team">Team</a>
@@ -203,10 +204,23 @@ and open the template in the editor.
         ?>
         <div class="container profile">
             <div class="col-md-8 header">Profile</div>
-            <div class="col-md-4 profile_pic"><img id="profilepic" src="img/profilepic/<?php echo $result['profile_pic']; ?>" alt="Profile Picture" /></div>
-            <div class="col-md-8 details">
-                <ul id="content">
-                    <?php foreach ($result_array as $result): ?>
+            <?php foreach ($result_array as $result): ?>
+                <div class="col-md-4 profile_pic"><br><center><img id="profilepic" src="img/profilepic/<?php echo $result['profile_pic']; ?>" alt="Profile Picture" /></center></div>
+                <br>
+
+                <center>
+                    <form action="profilePicUpdate.php" method="post" enctype="multipart/form-data">
+                        <input class="buttoncss" id="file" type="file" name="picture" />
+                        <label class="buttoncss2" for="file">Choose File</label>
+                        <input type='hidden' name="member_id" value="<?php echo $result['member_id'] ?>"/>
+                        <button class="buttoncss" id="submit" type="submit" name="submit">Upload</button>
+                    </form>
+                </center>
+
+
+                <div class="col-md-8 details">
+                    <ul id="content">
+
                         <li>Email: <?php echo $email; ?></li>
                         <li>First Name: <?php echo $result['firstname']; ?></li>
                         <li>Last Name: <?php echo $result['lastname']; ?></li>
