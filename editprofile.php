@@ -1,5 +1,5 @@
 <?php
-require_once ("include/database.php");
+require_once('include/database.php');
 
 if (!isset($message)) {
     $message = "";
@@ -8,13 +8,33 @@ if (!isset($message)) {
     $confirmpassword = "";
     $firstname = "";
     $lastname = "";
-    $nationality = "";
     $mobile = "";
     $firstlanguage = "";
     $city = "";
     $country = "";
 }
+
+$email = $_SESSION['login_user'];
+$query = "SELECT * FROM member,member_details where member.member_id =(SELECT member_id from member WHERE email = '$email') and member.member_id=member_details.member_id";
+$statement = $db->prepare($query);
+$statement->bindValue(":email", $email);
+$statement->execute();
+$result_array = $statement->fetchAll();
+$statement->closeCursor();
+
+foreach ($result_array as $result):
+
+    $edit_password = $result['password'];
+    $edit_confirmpassword = $result['password'];
+    $edit_firstname = $result['firstname'];
+    $edit_lastname = $result['lastname'];
+    $edit_mobile = $result['mobile'];
+    $edit_firstlanguage = $result['firstlanguage'];
+    $edit_city = $result['city'];
+    $edit_country = $result['country'];
+endforeach;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,16 +145,16 @@ if (!isset($message)) {
             <div class="row">
                 <div class="col-md-8">
                     <section>      
-                        <h1 class="entry-title"><span>Registration</span> </h1>
+                        <h1 class="entry-title"><span>Edit Profile</span> </h1>
                         <div id="messageDisplay"><?php echo $message; ?></div>
                         <hr>
-                        <form class="form-horizontal" action="registerprocess.php" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
+                        <form class="form-horizontal" action="editprofileprocess.php" method="post" name="signup" id="signup" enctype="multipart/form-data" >
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email ID <span class="text-danger">*</span></label>
                                 <div class="col-md-8 col-sm-9">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" name="registeremail" id="emailid" placeholder="Enter your Email ID" value="">
+                                        <input disabled type="email" class="form-control" name="registeremail" id="emailid" placeholder="Enter your Email ID" value="<?php echo $email; ?>"/>
                                     </div>
                                     <small> Your Email Id is being used for ensuring the security of your account, authorization and access recovery. </small> </div>
                             </div>
@@ -144,7 +164,7 @@ if (!isset($message)) {
                                 <div class="col-md-5 col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input type="password" class="form-control" name="registerpassword" id="password" placeholder="Choose password (5-15 chars)" value="">
+                                        <input type="password" class="form-control" name="registerpassword" id="password" placeholder="Choose password (5-15 chars)" value="<?php echo $edit_password; ?>">
                                     </div>   
                                 </div>
                             </div>
@@ -153,20 +173,20 @@ if (!isset($message)) {
                                 <div class="col-md-5 col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input type="password" class="form-control" name="confirmpassword" id="cpassword" placeholder="Confirm your password" value="">
+                                        <input type="password" class="form-control" name="confirmpassword" id="cpassword" placeholder="Confirm your password" value="<?php echo $edit_confirmpassword; ?>">
                                     </div>  
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">First Name <span class="text-danger">*</span></label>
                                 <div class="col-md-8 col-sm-9">
-                                    <input type="text" class="form-control" name="yourFirstName" id="mem_name" placeholder="Enter your Name here" value="">
+                                    <input type="text" class="form-control" name="yourFirstName" id="mem_name" placeholder="Enter your Name here" value="<?php echo $edit_firstname?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Last Name <span class="text-danger">*</span></label>
                                 <div class="col-md-8 col-sm-9">
-                                    <input type="text" class="form-control" name="yourLastName" id="mem_name" placeholder="Enter your Name here" value="">
+                                    <input type="text" class="form-control" name="yourLastName" id="mem_name" placeholder="Enter your Name here" value="<?php echo $edit_lastname?>">
                                 </div>
                             </div>
 
@@ -176,7 +196,7 @@ if (!isset($message)) {
                                 <div class="col-md-5 col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                        <input type="text" class="form-control" name="yourMobile" id="contactnum" placeholder="Enter your Primary contact no." value="">
+                                        <input type="text" class="form-control" name="yourMobile" id="contactnum" placeholder="Enter your Primary contact no." value="<?php echo $edit_mobile?>">
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +205,7 @@ if (!isset($message)) {
                                 <label class="control-label col-sm-3">First Language <br>
                                     <small>(required)</small></label>
                                 <div class="col-md-5 col-sm-8">
-                                    <input type="text" class="form-control" name="firstLanguage" id="firstLanguage" placeholder="First Language" value="">
+                                    <input type="text" class="form-control" name="firstLanguage" id="firstLanguage" placeholder="First Language" value="<?php echo $edit_firstlanguage?>">
                                 </div>
                             </div>
 
@@ -193,17 +213,17 @@ if (!isset($message)) {
                                 <label class="control-label col-sm-3">City. <br>
                                     <small>(if any)</small></label>
                                 <div class="col-md-5 col-sm-8">
-                                    <input type="text" class="form-control" name="city" id="city" placeholder="City" value="">
+                                    <input type="text" class="form-control" name="city" id="city" placeholder="City" value="<?php echo $edit_city?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Country <span class="text-danger">*</span></label>
-                                <div class="col-xs-8">
+                                <div class="col-md-5 col-sm-8">
                                     <div class="form-inline">
                                         <div class="form-group">
                                             <select id="country" name="country" class="form-control">
-                                                <option value="">Please select a country</option>
+                                                <option value="<?php echo $edit_country; ?>"><?php echo $edit_country; ?></option>
                                                 <option value="AF">Afghanistan</option>
                                                 <option value="AX">Åland Islands</option>
                                                 <option value="AL">Albania</option>
@@ -471,7 +491,7 @@ if (!isset($message)) {
 
                             <div class="form-group">
                                 <div class="col-xs-offset-3 col-xs-10">
-                                    <input name="Submit" type="submit" value="Register" class="btn btn-primary">
+                                    <input name="Submit" type="submit" value="Done" class="btn btn-primary">
                                 </div>
                             </div>
                         </form>

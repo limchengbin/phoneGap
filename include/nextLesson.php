@@ -7,7 +7,7 @@ if($_SESSION['current']>0 && $_SESSION['current'] <5){
 }
 
 
-$test = "UPDATE payment_completed SET current_lesson = " .$_SESSION['current']. " WHERE language_id = " . $_SESSION['language_id'] . " AND member_id = " . 1 ;
+$test = "UPDATE payment_completed SET current_lesson = " .$_SESSION['current']. " WHERE language_id = " . $_SESSION['language_id'] . " AND member_id = " . $_SESSION['memberID'] ;
 
 
 $query4 = $test;

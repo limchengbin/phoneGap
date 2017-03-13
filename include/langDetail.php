@@ -15,7 +15,7 @@ $statement->closeCursor();
 $query2 = "SELECT * from payment_completed where language_id= :id AND member_id = :member;";
 $statement2 = $db->prepare($query2);
 $statement2->bindValue(":id", $id);
-$statement2->bindValue(":member",1);
+$statement2->bindValue(":member",$_SESSION['memberID']);
 $statement2->execute();
 $language2 = $statement2->fetchAll();
 $statement2->closeCursor();

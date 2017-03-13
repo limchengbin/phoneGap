@@ -1,6 +1,5 @@
 <?php
-session_start();
-$_SESSION['id'] = 1;
+session_start();    
 $dsn = "mysql:host=localhost;dbname=phonegap";
 $username = 'root';
 $password = '';

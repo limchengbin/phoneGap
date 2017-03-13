@@ -1,6 +1,12 @@
 <?php
+require_once('include/database.php');
 
+if (!isset($_SESSION['login_user'])) {
+    header("Location: index.php");
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -9,7 +15,11 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
         <title>Profile</title>
 
         <!-- Bootstrap Core CSS -->
@@ -39,7 +49,7 @@ and open the template in the editor.
 
         <style>
             #mainNav {
-                background: black;
+                background-color: black;
             }
 
             body{
@@ -48,7 +58,6 @@ and open the template in the editor.
 
             .profile{
                 background-color: #e0e0d1;
-                height: 1100px;
                 margin-top: 220px;
                 margin-bottom: 100px;
             }
@@ -92,7 +101,7 @@ and open the template in the editor.
                 box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
                 padding: 15px 35px;
                 border: 0;
-                margin: 90px auto 0;
+                margin: 100px auto 0;
                 cursor: pointer;
             }
 
@@ -133,7 +142,7 @@ and open the template in the editor.
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a id="movelogo" class="navbar-brand page-scroll" href="#page-top"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
+                    <a id="movelogo" class="navbar-brand page-scroll" href="index.php#page-top"><img src="img/logos/jablogo2.png" style="width: 125px;"/></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -144,6 +153,9 @@ and open the template in the editor.
                         </li>
                         <li>
                             <?php include('include/userstatus.php'); ?>
+                        </li>
+                        <li>                        
+                            <?php include('include/loginlogout.php'); ?>
                         </li>
                         <li>
                             <a class="page-scroll" href="index.php#portfolio">Courses</a>
@@ -157,34 +169,67 @@ and open the template in the editor.
                         <li>
                             <a class="page-scroll" href="index.php#contact">Contact</a>
                         </li>
-                        <li>                        
-                            <?php include('include/loginlogout.php'); ?>
-                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container-fluid -->
         </nav>
+        <?php
+        $email = $_SESSION['login_user'];
 
+        $query = "SELECT * FROM member,member_details WHERE member.member_id =(SELECT member_id from member WHERE email = '$email')   and member.member_id=member_details.member_id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(":email", $email);
+        $statement->execute();
+        $result_array = $statement->fetchAll();
+        $statement->closeCursor();
+
+        $query2 = "SELECT language_id FROM payment_completed WHERE member_id = :id";
+        $statement2 = $db->prepare($query2);
+        $statement2->bindValue(":id", $_SESSION['memberID']);
+        $statement2->execute();
+        $result_array2 = $statement2->fetchAll();
+        $statement2->closeCursor();
+
+        $query3 = "SELECT * FROM language";
+        $statement3 = $db->prepare($query3);
+        $statement3->execute();
+        $result_array3 = $statement3->fetchAll();
+        $statement3->closeCursor();
+        ?>
         <div class="container profile">
             <div class="col-md-8 header">Profile</div>
-            <div class="col-md-4 profile_pic"></div>
+            <div class="col-md-4 profile_pic"><img id="profilepic" src="img/profilepic/<?php echo $result['profile_pic']; ?>" alt="Profile Picture" /></div>
             <div class="col-md-8 details">
                 <ul id="content">
-                    <li>Email: </li>
-                    <li>First Name: </li>
-                    <li>Last Name: </li>
-                    <li>Mobile: </li>
-                    <li>Address: </li>
-                    <li>City: </li>
-                    <li>Country: </li>
-                </ul>
+                    <?php foreach ($result_array as $result): ?>
+                        <li>Email: <?php echo $email; ?></li>
+                        <li>First Name: <?php echo $result['firstname']; ?></li>
+                        <li>Last Name: <?php echo $result['lastname']; ?></li>
+                        <li>Mobile: <?php echo $result['mobile']; ?></li>
+                        <li>First Language: <?php echo $result['firstlanguage']; ?></li>
+                        <li>City: <?php echo $result['city']; ?></li>
+                        <li>Country: <?php echo $result['country']; ?></li>
+                    <?php endforeach; ?>
 
-                <div class="form-row">
-                    <button id="update" type="button"><span>Update</span></button>
-                </div>
+                    <li>Language:
+                        <?php foreach ($result_array2 as $result2): ?>
+
+                            <?php
+                            for ($x = 0; $x < sizeof($result_array3); $x++) {
+                                if ($result2['language_id'] == $result_array3[$x]['language_id'])
+                                    echo $result_array3[$x]['language_name'];
+                            }
+                            ?>
+
+
+                        <?php endforeach; ?>
+                    </li>
+                </ul>
+                <a href="editprofile.php"><button id="update" type="button"><span>Update</span></button></a>
             </div>
+
         </div>
 
 
@@ -232,5 +277,6 @@ and open the template in the editor.
 
         <!-- Theme JavaScript -->
         <script src="js/agency.min.js"></script>
+
     </body>
 </html>

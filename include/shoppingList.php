@@ -7,8 +7,9 @@ require_once("database.php");
  * and open the template in the editor.
  */
 
-$query = "SELECT * from myorder  ";
+$query = "SELECT * from myorder where member_id = :member ";
 $statement = $db->prepare($query);
+$statement ->bindValue(":member" , $_SESSION['memberID']);
 $statement->execute();
 $list = $statement->fetchAll();
 $statement->closeCursor();

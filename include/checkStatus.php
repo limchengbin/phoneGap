@@ -6,11 +6,11 @@ require_once("database.php");
  * and open the template in the editor.
  */
 
-
+if(isset($_SESSION['memberID'])){
 $query = "SELECT * from payment_completed WHERE member_id = :id ";
 $statement = $db->prepare($query);
-$statement->bindValue(":id", 1);
+$statement->bindValue(":id", $_SESSION['memberID']);
 $statement->execute();
 $lang = $statement->fetchAll();
-$statement->closeCursor();
+$statement->closeCursor();}
 

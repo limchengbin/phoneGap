@@ -18,7 +18,6 @@ if (isset($_POST['email'])) {
         $statement->execute();
         $result_array = $statement->fetchAll();
         $statement->closeCursor();
-        
 
         if (count($result_array)) {
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -28,14 +27,16 @@ if (isset($_POST['email'])) {
                 if (password_verify($result['password'], $hashed_password)) {
                     $message = "Either the email or password is incorrect. Try it again.";
                 } else {
-                    session_start();
+                    
                     $_SESSION['login_user'] = $email;
                     $_SESSION['user_status'] = $result['user_status'];
+                    $_SESSION['memberID'] = $result['member_id'];
+
+                    
                     if ($result['user_status'] == 1) {
-                        header("Location:profile.php");
-                        
+                        header("Location: ../profile.php");
                     } else {
-                        header("Location:myprofile.php");
+                        header("Location: ../profile.php");
                     }
                     exit();
                 }
@@ -44,11 +45,9 @@ if (isset($_POST['email'])) {
             $message = "Either the email or password is incorrect. Try it again.";
         }
     } else {
-        if (count($form_errors) == 1) {
+        
             $message = "There was one error in the form";
-        } else {
-            $message = "There were " . count($form_errors) . " errors in the form";
-        }
+        
     }
 
 

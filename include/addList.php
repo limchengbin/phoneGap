@@ -4,7 +4,7 @@ require_once("database.php");
 
 $query = "SElECT * FROM myorder where member_id = :id";
 $statement = $db->prepare($query);
-$statement->bindValue(":id", 1);
+$statement->bindValue(":id", $_SESSION['memberID']);
 $statement->execute();
 $list = $statement->fetchAll();
 $statement->closeCursor();
@@ -22,7 +22,7 @@ endforeach;
 
 $query3 = "DELETE FROM myorder where member_id= :memberID";
 $statement3 = $db->prepare($query3);
-$statement3-> bindValue(":memberID" ,1);
+$statement3-> bindValue(":memberID" ,$_SESSION['memberID']);
 $statement3->execute();
 $statement3->closeCursor();
 
