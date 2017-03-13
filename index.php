@@ -165,9 +165,13 @@ if (!isset($message)) {
 
                 <div class="row">
                     <?php foreach ($language as $language) : ?>
-                        <div class="alert alert-info" id="alert_template" style="display: none;">
-                            <button type="button" class="close">×</button>
-                        </div>
+                        <?php
+                        if (isset($_SESSION['memberID'])) {
+                            echo '<div class = "alert alert-info" id = "alert_template" style = "display: none;">
+                            <button type = "button" class = "close">×</button>
+                             </div>';
+                        }
+                        ?>
                         <div  class="col-md-4 col-sm-6 portfolio-item">   
                             <a href="" onclick="addProduct(<?php echo $language['language_id'] ?>);" class="portfolio-link" data-toggle="modal">
                                 <div class="portfolio-hover">
